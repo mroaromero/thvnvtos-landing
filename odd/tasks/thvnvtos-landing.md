@@ -13,12 +13,13 @@ S5. Dirección visual: "Atmosférico minimalista" (respuesta en kickoff): oscuri
 
 ## Tasks
 
-- T1 — Scaffold: Vite + React + TS + Tailwind v4 + limpieza template (S1, S3) — inline — done — commit abeec2e; build verde (tsc + vite build)
-- T2 — Diseño: 3 artboards atmosférico minimalista con las 5 secciones (S4, S5) — inline — done — design/thvnvtos-landing/ (01-paisaje, 02-ritual, 03-capitulos + manifest)
-- T3 — Implementar shell: hero + nav + footer en React (S4, S5) — inline — done — commit efb061b
-- T4 — Implementar secciones MÚSICA, ARCHIVOS, FECHAS, MERCH, CONTACTO (S4) — inline — done — commit 4727c91
-- T5 — Verificar: `tsc -b` + `vite build` + revisión visual en dev server (S1) — inline — pending — tsc/build verdes, dev server en 127.0.0.1:5173 sirviendo; queda el chequeo visual del usuario
-- T6 — Deploy a Vercel (S2) — inline — pending — requiere cuenta/decisión del usuario (push y deploy son decisión humana)
+- T1 — Scaffold: Vite + React + TS + Tailwind v4 + limpieza template (S1, S3) — inline — done — commit 1074d17; build verde (tsc + vite build)
+- T2 — Diseño: 3 artboards atmosférico minimalista con las 5 secciones (S4, S5) — inline — done — design/thvnvtos-landing/ (01-paisaje, 02-ritual, 03-capitulos + manifest); commit 6e8fe70
+- T3 — Implementar shell: hero + nav + footer en React (S4, S5) — inline — done — commit 297c554
+- T4 — Implementar secciones MÚSICA, ARCHIVOS, FECHAS, MERCH, CONTACTO (S4) — inline — done — commit a5908e0
+- T5 — Verificar: `tsc -b` + `vite build` + revisión visual en dev server (S1) — inline — done — tsc/build verdes, dev server verificado, visual aprobado por el usuario; assess RDD: medium / reviewDue false
+- T6 — Deploy a Vercel (S2) — inline — pending — requiere cuenta/decisión del usuario
+- T7 — Subir repo a GitHub (S2, prep) — inline — done — repo público mroaromero/thvnvtos-landing, main 91a05bf; autoría reescrita al noreply por bloqueo de privacidad de GitHub
 
 ## Log
 
@@ -32,4 +33,6 @@ L4 (2026-11-06) — Artboards creados en design/thvnvtos-landing/: 01-paisaje (s
 
 L5 (2026-11-06) — Elegido artboard 01-paisaje (scroll sereno, máximo espacio negativo). Implementación en React + Tailwind v4 con los tokens del artboard; handoff vía gentle_design; verificación: tsc + vite build + servidor de desarrollo local (visual final a cargo del usuario).
 
-L6 (2026-11-06) — Implementación completa: shell (tokens, grano, nav, hero, footer) commit efb061b; secciones MÚSICA/ARCHIVOS/FECHAS/MERCH/CONTACTO commit 4727c91; handoff del artboard registrado (handoffs.json) commit aparte. Evidencia: tsc -b + vite build verdes (25 módulos, CSS 19.65 kB / JS 229.83 kB), dev server 127.0.0.1:5173 arriba sirviendo <title>THVNVTOS</title> (SPA; el DOM se monta en el navegador). Año de Destrvdo verificado en Bandcamp: 21 dic 2020. Assess nativo (RDD on): risk medium / nativeRisk medium (config: handoffs.json), 12 paths / 555 líneas, reviewDue false (under_budget) → diferida al slice de PR; plan: writerSelfVerification, sin verificador independiente (sin ítem de alto riesgo escalado). Pendientes del usuario: fechas reales, ítems/precios de merch, email de booking, chequeo visual final, y decisión de deploy a Vercel (T6).
+L6 (2026-11-06) — Implementación completa: shell (tokens, grano, nav, hero, footer) commit 297c554 (antes efb061b); secciones MÚSICA/ARCHIVOS/FECHAS/MERCH/CONTACTO commit a5908e0 (antes 4727c91); handoff del artboard registrado (handoffs.json) 56db805 (antes 230d24f). Evidencia: tsc -b + vite build verdes (25 módulos, CSS 19.65 kB / JS 229.83 kB), dev server 127.0.0.1:5173 arriba sirviendo <title>THVNVTOS</title> (SPA; el DOM se monta en el navegador). Año de Destrvdo verificado en Bandcamp: 21 dic 2020. Assess nativo (RDD on): risk medium / nativeRisk medium (config: handoffs.json), 12 paths / 555 líneas, reviewDue false (under_budget) → diferida al slice de PR; plan: writerSelfVerification, sin verificador independiente (sin ítem de alto riesgo escalado). Pendientes del usuario: fechas reales, ítems/precios de merch, email de booking, y decisión de deploy a Vercel (T6).
+
+L7 (2026-11-06) — Push autorizado por el usuario: repo público mroaromero/thvnvtos-landing, rama main en 91a05bf. El push inicial fue rechazado por la protección "Block command line pushes that expose my email" de GitHub; por decisión del usuario se reescribió la autoría de los 7 commits al noreply 128869953+mroaromero@users.noreply.github.com (filter-branch) y se fijó user.email repo-local (sin tocar el global). El usuario aprobó el visual — T5 done. T6 (deploy Vercel) sigue pendiente de decisión.
