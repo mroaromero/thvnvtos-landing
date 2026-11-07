@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "chosen": "01-paisaje.html",
+  "handoffs": {
+    "01-paisaje.html": {
+      "status": "in_progress",
+      "queued": false,
+      "sentAt": "2026-11-07T02:24:23.012Z",
+      "startedAt": "2026-11-07T02:25:40.129Z",
+      "implementedAt": null,
+      "feature": "odd/tasks/thvnvtos-landing.md",
+      "note": "Implementando en React + Tailwind: shell (tokens, nav, hero, footer) + secciones"
+    }
+  }
+}
