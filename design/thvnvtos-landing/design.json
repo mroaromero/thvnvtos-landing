@@ -1,0 +1,10 @@
+{
+  "title": "THVNVTOS — landing",
+  "brief": "Landing page atmosférico minimalista para la banda de post black metal THVNVTOS (Santiago de Chile): hero + MÚSICA / ARCHIVOS / FECHAS / MERCH / CONTACTO.",
+  "feature": "odd/tasks/thvnvtos-landing.md",
+  "artboards": [
+    { "file": "01-paisaje.html", "title": "Paisaje — scroll sereno", "tradeoff": "Máximo espacio negativo y calma; menos densidad informativa", "width": 1440, "height": 900 },
+    { "file": "02-ritual.html", "title": "Ritual — niebla y tipografía fantasma", "tradeoff": "Teatral y envolvente; más peso visual, menos lectura lineal", "width": 1440, "height": 900 },
+    { "file": "03-capitulos.html", "title": "Capítulos — editorial numerado", "tradeoff": "Más informativo y scaneable; menos aire contemplativo", "width": 1440, "height": 900 }
+  ]
+}

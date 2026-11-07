@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>THVNVTOS — 01 Paisaje</title>
+<style>
+  :root{
+    --bg:#0a0a0c; --bg2:#0e0e11; --ink:#e7e4dd; --ash:#9a968c; --dim:#57534c;
+    --ember:#b05c3b; --ember-soft:#cf8261; --line:#222228;
+    --serif: Georgia, 'Times New Roman', serif;
+    --mono: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--ink);font-family:var(--serif);line-height:1.7;-webkit-font-smoothing:antialiased}
+  body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:60;opacity:.05;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)'/%3E%3C/svg%3E")}
+  a{color:inherit;text-decoration:none}
+  :focus-visible{outline:2px solid var(--ember);outline-offset:4px}
+  .mono{font-family:var(--mono);text-transform:uppercase;letter-spacing:.24em;font-size:.68rem;color:var(--ash)}
+  .container{width:min(100% - 3rem, 74rem);margin-inline:auto}
+
+  /* nav */
+  header.nav{position:fixed;inset:0 0 auto 0;z-index:50;padding:1.4rem 0;border-bottom:1px solid var(--line);
+    background:linear-gradient(var(--bg) 0%, color-mix(in srgb, var(--bg) 82%, transparent) 100%);
+    backdrop-filter:blur(6px)}
+  .nav-inner{display:flex;align-items:baseline;justify-content:space-between;gap:1.5rem;flex-wrap:wrap}
+  .brand{font-family:var(--mono);letter-spacing:.4em;font-size:.8rem;color:var(--ink)}
+  nav.links{display:flex;gap:1.6rem;flex-wrap:wrap}
+  nav.links a{font-family:var(--mono);letter-spacing:.22em;font-size:.66rem;color:var(--ash);transition:color .3s}
+  nav.links a:hover{color:var(--ember-soft)}
+
+  section{scroll-margin-top:6.5rem}
+  .section{padding:7.5rem 0;border-bottom:1px solid var(--line)}
+  .kicker{display:flex;align-items:center;gap:1rem;margin-bottom:2.75rem}
+  .kicker::after{content:"";flex:1;height:1px;background:var(--line)}
+
+  .heading{font-size:clamp(2rem, 4.6vw, 3.4rem);font-weight:400;letter-spacing:.02em;line-height:1.12}
+
+  /* hero */
+  .hero{min-height:100svh;display:grid;place-items:center;text-align:center;padding:8rem 1rem 5rem}
+  .hero .wordmark{font-size:clamp(3rem, 11vw, 9.5rem);font-weight:400;letter-spacing:.32em;text-indent:.32em;line-height:.95}
+  .hero .tag{display:block;margin-top:2.2rem;color:var(--ash)}
+  .hero .rule{width:56px;height:1px;background:var(--dim);margin:2.2rem auto}
+  .hero .hint{margin-top:1.2rem;transform:rotate(0)}
+  .hero .hint span{display:inline-block;animation:drip 2.6s ease-in-out infinite}
+  @keyframes drip{0%,100%{transform:translateY(0);opacity:.5}50%{transform:translateY(6px);opacity:1}}
+
+  /* releases */
+  .release{display:grid;grid-template-columns:7.5rem 1fr;gap:2.5rem;align-items:center;padding:2.4rem 0;border-bottom:1px solid var(--line)}
+  .release:last-child{border-bottom:0}
+  .cover{aspect-ratio:1;width:100%;border-radius:2px;position:relative;overflow:hidden;box-shadow:0 18px 40px rgba(0,0,0,.5)}
+  .cover::after{content:"";position:absolute;inset:0;background:linear-gradient(160deg, rgba(255,255,255,.05), transparent 42%)}
+  .cover.despojo{background:
+    radial-gradient(120% 90% at 18% 12%, #3a1c14 0%, transparent 55%),
+    radial-gradient(140% 120% at 88% 88%, #131318 0%, transparent 60%),
+    radial-gradient(circle at 50% 46%, #6b2f1c 0%, #3c1d13 38%, #0d0d10 100%);
+    }
+  .cover.destrvdo{background:
+    conic-gradient(from 200deg at 50% 50%, #1d2220, #55604e, #22241f, #1d2220),
+    radial-gradient(90% 90% at 70% 20%, #6d7459 0%, transparent 60%);}
+  .cover.noche{background:
+    radial-gradient(130% 100% at 80% 10%, #1c2733 0%, transparent 55%),
+    linear-gradient(180deg, #0d1016 0%, #131a22 55%, #07080b 100%);}
+  .cover.lugar{background:
+    radial-gradient(120% 120% at 30% 80%, #2a2b33 0%, transparent 60%),
+    linear-gradient(155deg, #101014 40%, #1b1c22 100%);}
+  .release .meta{display:flex;flex-wrap:wrap;gap:.5rem 1.6rem;margin-top:.65rem}
+  .release h3{font-size:clamp(1.6rem, 3vw, 2.4rem);font-weight:400;letter-spacing:.04em}
+  .release .note{color:var(--ember-soft)}
+
+  /* archive */
+  .archivo .body{max-width:46rem}
+  .archivo p{color:var(--ash);margin-bottom:1.4rem}
+  .archivo p strong{color:var(--ink);font-weight:400}
+  blockquote.lyric{border:0;border-left:1px solid var(--dim);padding:1.6rem 0 1.6rem 2rem;margin:2.6rem 0;
+    font-style:italic;font-size:clamp(1.3rem, 2.4vw, 1.9rem);line-height:1.5;color:var(--ink)}
+  blockquote.lyric cite{display:block;font-style:normal;font-family:var(--mono);font-size:.64rem;letter-spacing:.24em;color:var(--ash);margin-top:1rem;text-transform:uppercase}
+  ul.lives{list-style:none;display:flex;flex-wrap:wrap;gap:1.4rem 2.6rem;margin-top:2rem}
+  ul.lives li::before{content:"—";color:var(--ember);margin-right:.7rem}
+  .fotos{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:3rem;max-width:52rem}
+  .fotos figure{aspect-ratio:4/3;background:linear-gradient(200deg,#141419,#0c0c0f);border:1px solid var(--line);display:grid;place-items:center;border-radius:2px}
+  .fotos figcaption{font-family:var(--mono);font-size:.58rem;letter-spacing:.2em;color:var(--dim);text-transform:uppercase;text-align:center;padding:0 1rem}
+
+  /* dates */
+  .date{display:grid;grid-template-columns:11rem 1fr auto;gap:2rem;align-items:baseline;padding:1.35rem 0;border-bottom:1px solid var(--line);font-size:1.05rem}
+  .date .when{font-family:var(--mono);letter-spacing:.18em;font-size:.72rem;color:var(--ember-soft);text-transform:uppercase}
+  .date .place{color:var(--ash)}
+  .date .soon{font-family:var(--mono);font-size:.62rem;letter-spacing:.22em;color:var(--ash);text-transform:uppercase}
+
+  /* merch */
+  .grid-merch{display:grid;grid-template-columns:repeat(4,1fr);gap:1.4rem}
+  .item{border:1px solid var(--line);border-radius:3px;padding:1.1rem;background:var(--bg2)}
+  .item .art{aspect-ratio:1;border-radius:2px;margin-bottom:1.1rem;position:relative;overflow:hidden}
+  .item .art::before{content:"";position:absolute;inset:0}
+  .art.tshirt{background:linear-gradient(160deg,#15151a,#1a1a20)}
+  .art.vinyl{background:radial-gradient(circle at 50% 50%, #0c0c0f 0 30%, #1c1c22 31% 34%, #0c0c0f 35% 62%, #232329 63% 66%, #0c0c0f 67%)}
+  .art.cassette{background:repeating-linear-gradient(90deg,#1b1b21 0 10px,#14141a 10px 20px)}
+  .art.poster{background:linear-gradient(160deg,#2a2118,#141210)}
+  .item h4{font-weight:400;font-size:1.05rem;letter-spacing:.06em}
+  .item .price{font-family:var(--mono);font-size:.62rem;letter-spacing:.18em;color:var(--dim);text-transform:uppercase;margin-top:.4rem}
+
+  /* contact */
+  .contact-lines{display:grid;gap:1.1rem;margin-top:.5rem}
+  .cline{display:flex;align-items:baseline;gap:2rem;border-bottom:1px solid var(--line);padding:.9rem 0}
+  .cline .k{font-family:var(--mono);font-size:.64rem;letter-spacing:.24em;color:var(--ash);text-transform:uppercase;min-width:9rem}
+  .cline .v{font-size:1.15rem}
+
+  footer.site{border-top:1px solid var(--line);padding:3rem 0 4rem}
+  footer.site .cols{display:flex;justify-content:space-between;gap:2rem;flex-wrap:wrap;color:var(--dim)}
+  .formacion{margin-top:2.4rem;font-family:var(--mono);font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ash);line-height:2.2}
+
+  .reveal{opacity:0;transform:translateY(16px);transition:opacity .9s ease, transform .9s ease}
+  .reveal.in{opacity:1;transform:none}
+  @media (prefers-reduced-motion: reduce){
+    .reveal{opacity:1;transform:none;transition:none}
+    .hero .hint span{animation:none}
+    html{scroll-behavior:auto}
+  }
+  @media (max-width:800px){
+    .release{grid-template-columns:5.5rem 1fr;gap:1.4rem}
+    .grid-merch{grid-template-columns:repeat(2,1fr)}
+    .date{grid-template-columns:1fr;gap:.4rem}
+    .fotos{grid-template-columns:1fr}
+    .cline{flex-direction:column;gap:.4rem}
+  }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="container nav-inner">
+    <a class="brand" href="#inicio">THVNVTOS</a>
+    <nav class="links" aria-label="Secciones">
+      <a href="#musica">Música</a>
+      <a href="#archivos">Archivos</a>
+      <a href="#fechas">Fechas</a>
+      <a href="#merch">Merch</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+  </div>
+</header>
+
+<main id="inicio">
+  <section class="hero" aria-label="Portada">
+    <div>
+      <p class="mono">Post black metal — Santiago de Chile</p>
+      <h1 class="wordmark">THVNVTOS</h1>
+      <div class="rule"></div>
+      <p class="mono tag">Desde 2017 / «Despojo» — 2026</p>
+      <p class="hint"><span class="mono">Desplazá</span></p>
+    </div>
+  </section>
+
+  <section id="musica" class="section">
+    <div class="container">
+      <p class="kicker mono">Música</p>
+      <h2 class="heading reveal">Sonido que se deshace en tierra y humo.</h2>
+
+      <article class="release reveal">
+        <div class="cover despojo" role="img" aria-label="Portada de Despojo"></div>
+        <div>
+          <h3>Despojo</h3>
+          <p class="meta mono"><span>Larga duración</span><span>2026</span><span class="note">Nuevo</span></p>
+          <p class="mono" style="margin-top:1rem;line-height:2.2;color:var(--ash)">Introspección · Heraldo de Muerte · Desposesión · Ningún Lugar …</p>
+        </div>
+      </article>
+
+      <article class="release reveal">
+        <div class="cover destrvdo" role="img" aria-label="Portada de Destrvdo"></div>
+        <div>
+          <h3>Destrvdo</h3>
+          <p class="meta mono"><span>Álbum</span><span>2020</span></p>
+          <p class="mono" style="margin:.9rem 0 0;color:var(--ash);font-size:.68rem;line-height:2">Deforestación · colonialismo · la relación del hombre consigo mismo</p>
+        </div>
+      </article>
+
+      <article class="release reveal">
+        <div class="cover noche" role="img" aria-label="Portada de Noche y Niebla"></div>
+        <div>
+          <h3>Noche y Niebla</h3>
+          <p class="meta mono"><span>EP</span><span>2017</span></p>
+          <p class="mono" style="margin:.9rem 0 0;color:var(--ash);font-size:.68rem;line-height:2">I · Internado en los bosques — II · Éxodo</p>
+        </div>
+      </article>
+
+      <article class="release reveal">
+        <div class="cover lugar" role="img" aria-label="Portada de Ningún Lugar"></div>
+        <div>
+          <h3>Ningún Lugar</h3>
+          <p class="meta mono"><span>Single · Video</span><span>2022</span></p>
+          <p class="mono" style="margin:.9rem 0 0;color:var(--ash);font-size:.68rem;line-height:2">Grabado y masterizado por Llancamaiden Studios — videoclip por Voidless Productions</p>
+        </div>
+      </article>
+
+      <p class="mono reveal" style="margin-top:2.4rem;color:var(--ash)">Adelanto «Heraldo de Muerte» disponible — thvnvtosproject.bandcamp.com</p>
+    </div>
+  </section>
+
+  <section id="archivos" class="section archivo">
+    <div class="container">
+      <p class="kicker mono">Archivos</p>
+      <div class="body">
+        <p class="reveal"><strong>Quirihue, 2017.</strong> Un proyecto de una sola persona que cruza las tierras del sur; en esas tierras se compone el primer EP. Después, la banda: cinco cuerpos habitando una ciudad caótica.</p>
+        <blockquote class="lyric reveal">
+          Raíces desbordan / desde las cavernas / suelos trizados / llamas negras, llamas de muerte que entonan el fin.
+          <cite>Introspección — Despojo</cite>
+        </blockquote>
+        <p class="reveal"><strong>En vivo:</strong> cinco formas de respirar heavy en la escena. Algunas huellas, otras por venir.</p>
+        <ul class="lives reveal">
+          <li>Rancagua</li>
+          <li>Concepción</li>
+          <li>Buenos Aires, Argentina</li>
+          <li>Quirihue</li>
+        </ul>
+      </div>
+      <div class="fotos reveal">
+        <figure><figcaption>01 — archivo 2017</figcaption></figure>
+        <figure><figcaption>02 — en vivo</figcaption></figure>
+        <figure><figcaption>03 — estudio</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <section id="fechas" class="section">
+    <div class="container">
+      <p class="kicker mono">Fechas</p>
+      <div class="reveal">
+        <div class="date">
+          <span class="when">2026</span>
+          <span class="place">«Despojo» en vivo</span>
+          <span class="soon">Fechas por anunciar</span>
+        </div>
+        <div class="date">
+          <span class="when">—</span>
+          <span class="place">Santiago de Chile</span>
+          <span class="soon">Por anunciar</span>
+        </div>
+        <div class="date">
+          <span class="when">—</span>
+          <span class="place">Gira</span>
+          <span class="soon">Por anunciar</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="merch" class="section">
+    <div class="container">
+      <p class="kicker mono">Merch</p>
+      <div class="grid-merch">
+        <article class="item reveal">
+          <div class="art vinyl" role="img" aria-label="Vinilo"></div>
+          <h4>Despojo — Vinilo</h4>
+          <p class="price">Precio por definir</p>
+        </article>
+        <article class="item reveal">
+          <div class="art cassette" role="img" aria-label="Cassette"></div>
+          <h4>Despojo — Cassette</h4>
+          <p class="price">Precio por definir</p>
+        </article>
+        <article class="item reveal">
+          <div class="art tshirt" role="img" aria-label="Remera"></div>
+          <h4>Remera</h4>
+          <p class="price">Precio por definir</p>
+        </article>
+        <article class="item reveal">
+          <div class="art poster" role="img" aria-label="Póster"></div>
+          <h4>Póster</h4>
+          <p class="price">Precio por definir</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="contacto" class="section">
+    <div class="container">
+      <p class="kicker mono">Contacto</p>
+      <h2 class="heading reveal" style="margin-bottom:2.6rem">Escribinos, aparecemos.</h2>
+      <div class="contact-lines reveal">
+        <div class="cline"><span class="k">Bandcamp</span><span class="v">thvnvtosproject.bandcamp.com</span></div>
+        <div class="cline"><span class="k">Instagram</span><span class="v">@thvnvtosprojectofficial</span></div>
+        <div class="cline"><span class="k">Facebook</span><span class="v">Thvnvtos</span></div>
+        <div class="cline"><span class="k">Booking</span><span class="v">— a definir</span></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site">
+  <div class="container cols">
+    <p class="mono">© 2026 THVNVTOS — Santiago de Chile</p>
+    <p class="mono">Post black metal · Hardcore · Doom</p>
+  </div>
+  <div class="container formacion">
+    Diego Oñate · voz — Juan Pablo Fuentes · guitarra — David Sandoval · guitarra — Benjamin Jara · bajo — Pablo Artes · batería
+  </div>
+</footer>
+
+<script>
+(()=>{
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const io = new IntersectionObserver(es => {
+    es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: .12 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+})();
+</script>
+</body>
+</html>
