@@ -1,5 +1,10 @@
+import { Archivos } from "./components/Archivos";
+import { Contacto } from "./components/Contacto";
+import { Fechas } from "./components/Fechas";
 import { Footer } from "./components/Footer";
 import { Hero } from "./components/Hero";
+import { Merch } from "./components/Merch";
+import { Musica } from "./components/Musica";
 import { Nav } from "./components/Nav";
 
 function App() {
@@ -9,7 +14,11 @@ function App() {
       <Nav />
       <main>
         <Hero />
-        {/* Secciones: Música · Archivos · Fechas · Merch · Contacto */}
+        <Musica />
+        <Archivos />
+        <Fechas />
+        <Merch />
+        <Contacto />
       </main>
       <Footer />
     </>
